@@ -32,6 +32,7 @@ from bs4 import BeautifulSoup	#Realiza a "filtragem" do HTML (parse html)
 from sys import argv			#Le os argumentos
 
 def gen(RANGE, search, downloadURL):
+
 	links = []					#Armazena links
 
 	#Lista de artigos pode ser encontrada no link abaixo
@@ -60,11 +61,12 @@ def gen(RANGE, search, downloadURL):
 	elif search != False and RANGE == False and downloadURL == False:
 		print(" [!] Searching for: " + search)
 		for i in links[1:]:
-			if search.replace("\"", "") in i:
-				print("[ARTIGO] " + i.replace("http://cienciahacker.com.br/", "").replace("/", "").replace("-", " "))
-				print("[URL] " + i + "\n")
-			else:
-				pass
+			for j in search.split(" "):
+				if j.replace("\"", "") in i:
+					print("[ARTIGO] " + i.replace("http://cienciahacker.com.br/", "").replace("/", "").replace("-", " "))
+					print("[URL] " + i + "\n")
+				else:
+					pass
 		exit()
 
 	elif downloadURL != False and RANGE == False and search == False:
@@ -93,12 +95,21 @@ def gen(RANGE, search, downloadURL):
 			for l in links:
 				print(l)
 			question = True
-	
+
+		options = {
+'page-size': 'A4',
+'margin-top': '0.25in',
+'margin-right': '0.25in',
+'margin-bottom': '0.25in',
+'margin-left': '0.25in',
+'encoding': "UTF-8",
+'no-outline': None}
+
 	if downloadURL != False:
 		try:
 			out = str(url.replace("http://cienciahacker.com.br/", "").replace("/", "").replace("-", " ") + ".pdf")
 			print(" Gerando: %s" % (out))
-			pdfkit.from_url(url, out)
+			pdfkit.from_url(url, out, options = options)
 			exit()
 		except Exception as e:
 			pass
@@ -111,7 +122,7 @@ def gen(RANGE, search, downloadURL):
 				out = str(url.replace("http://cienciahacker.com.br/", "").replace("/", "").replace("-", " ") + ".pdf")
 
 				print(" [%i/%i] Gerando: %s" % (count, total, out))
-				pdfkit.from_url(url, out)
+				pdfkit.from_url(url, out, options = options)
 
 			except Exception as e:
 				pass
@@ -121,15 +132,30 @@ def gen(RANGE, search, downloadURL):
 	print(" [+] %i PDFs gerados" % count ) 
 
 if __name__ == "__main__":
+
+	help = """
+Usage: python web2pdf.py -a -r {start-end} -s \"search term\" -u {url}
+
+ [EXEMPLES]
+
+Download range
+ python web2pdf.py -r 1-5
+
+Search for PDF named "backdoor"
+ python web2pdf.py -s "backdoor"
+
+Search for all PDFs
+ python web2pdf.py -s "")
+
+Download PDF based on URL
+ python web2pdf.py -u "http://cienciahacker.com.br/beholder/"
+
+Download all PDFs
+ python web2pdf.py -a
+"""
+
 	if len(argv) <= 1:		#Verifica numero de argumentos
-		print("Usage: python web2pdf.py -a -r {start-end} -s \"search term\" -u {url}")
-		print("\n [EXEMPLES]\n")
-		print("python web2pdf.py -r 1-5")
-		print("python web2pdf.py -s \"backdoor\"")
-		print("python web2pdf.py -s \"\"")
-		print("python web2pdf.py -u \"http://cienciahacker.com.br/beholder/\"")
-		print("python web2pdf.py -a")
-		
+		print(help)
 		exit()
 	elif len(argv) >= 2:
 		if argv[1] == "-a":
@@ -144,11 +170,5 @@ if __name__ == "__main__":
 			url = argv[2]
 			gen(False, False, url)
 		else:
-			print("Usage: python web_to_pdf.py -a -r {start-end} -s \"search term\" -u {url}")
-			print("\n [EXEMPLES]\n")
-			print("python web2pdf.py -r 1-5")
-			print("python web2pdf.py -s \"backdoor\"")
-			print("python web2pdf.py -s \"\"")
-			print("python web2pdf.py -u \"http://cienciahacker.com.br/beholder/\"")
-			print("python web2pdf.py -a")
+			print(help)
 			exit()
