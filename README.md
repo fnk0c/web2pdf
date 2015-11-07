@@ -20,7 +20,7 @@ Gera PDF de todos os artigos do Ciência Hacker presentes na lista de artigos do
 ### Help 
 --------
 
-    Usage: python web_to_pdf.py -a -r {start-end} -s \"search term\" -u {url}
+    Usage: python web_to_pdf.py -a -r {start-end} -s {"search term"} -u {"url"}
      
       [EXEMPLES]
       
