@@ -25,9 +25,9 @@ Gera PDF de todos os artigos do Ciência Hacker presentes na lista de artigos do
       [EXEMPLES]
       
     python web2pdf.py -r 1-5
-    python web2pdf.py -s \"backdoor\"
-    python web2pdf.py -s \"\"
-    python web2pdf.py -u \"http://cienciahacker.com.br/beholder/\"
+    python web2pdf.py -s "backdoor"
+    python web2pdf.py -s ""
+    python web2pdf.py -u "http://cienciahacker.com.br/beholder/"
     python web2pdf.py -a
 
 ### Using
@@ -39,11 +39,11 @@ Download all PDFs
 
 Search for PDFs
 
-    python web2pdf.py -s \"backdoor\"
+    python web2pdf.py -s "backdoor"
 
 List all PDFs
 
-    python web2pdf.py -s \"\"
+    python web2pdf.py -s ""
 
 Download range of PDFs
 
@@ -51,4 +51,4 @@ Download range of PDFs
 
 Download PDF of URL
 
-    python web2pdf.py -u \"http://cienciahacker.com.br/beholder/\"
+    python web2pdf.py -u "http://cienciahacker.com.br/beholder/"
