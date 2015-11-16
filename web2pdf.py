@@ -45,7 +45,7 @@ def main(RANGE, search, downloadURL):
 		content = []
 
 		html = u.urlopen(URL)
-		soup = BeautifulSoup(html.read().decode("utf-8"), "lxml")
+		soup = BeautifulSoup(html.read().decode("utf-8"), "html5lib")
 
 		for i in soup.findAll("article"):#, attrs={"class":"entry-content"}):
 			content.append(i)
@@ -79,7 +79,7 @@ def main(RANGE, search, downloadURL):
 
 		html_lista = u.urlopen(lista_artigos)
 		html_lista = html_lista.read()
-		soup = BeautifulSoup(html_lista, "lxml")
+		soup = BeautifulSoup(html_lista, "html5lib")
 
 		#Aqui comecamos a parsear o HTML com o beautifulsoup. Abra seu navegador e
 		#Clique em inspecionar elementos para entender o que foi feito
