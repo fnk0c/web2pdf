@@ -75,7 +75,7 @@ def main(RANGE, search, downloadURL):
 	if skip == False:
 
 		#Lista de artigos pode ser encontrada no link abaixo
-		lista_artigos = "https://github.com/cienciahacker/index/blob/master/Arquivos/Artigos.md"
+		lista_artigos = "https://github.com/cienciahacker/index/blob/master/cienciaHacker/arquivos/artigos.md"
 
 		html_lista = u.urlopen(lista_artigos)
 		html_lista = html_lista.read()
