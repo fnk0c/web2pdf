@@ -35,7 +35,7 @@ from bs4 import BeautifulSoup	#Realiza a "filtragem" do HTML (parse html)
 from sys import argv, path
 from os import system
 path.append("configuration")
-from config import *			#Le os argumentos
+from config import *
 
 def main(RANGE, search, downloadURL):
 	"""
@@ -60,7 +60,7 @@ def main(RANGE, search, downloadURL):
 
 		with open("out.html", "w") as output:
 			output.write(src)
-		pdfkit.from_file("out.html", "output/%s" % OUT, options = options)
+		pdfkit.from_file("out.html", "output/%s" % OUT, options=options, css=css)
 
 	"""
 	COLETA TODOS OS LINKS DO GITHUB  ###########################################
@@ -166,6 +166,7 @@ def main(RANGE, search, downloadURL):
 			print(e)
 
 		print("\n [+] %s gerado" % out)
+		system("rm -rf out.html")
 		exit()
 
 	#converte lista de urls

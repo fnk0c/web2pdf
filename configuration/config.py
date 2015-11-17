@@ -12,3 +12,5 @@ options = {
 'disable-javascript': None,
 'quiet': None
 }
+
+css = 'configuration/template2.css'
