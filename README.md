@@ -7,11 +7,11 @@ Gera PDF de todos os artigos do Ciência Hacker presentes na lista de artigos do
 
 **Debian**  
 
-    sudo apt-get install python3, python3-pip  
+    sudo apt-get install python3, python3-pip wkhtmltopdf  
 
 **Arch**  
 
-    sudo pacman -S python python-pip  
+    sudo pacman -S python python-pip wkhtmltopdf  
 
 **After that**  
 
