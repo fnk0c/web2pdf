@@ -85,7 +85,7 @@ html {
 	-moz-box-sizing:    border-box; /* Still needed for Firefox 28; see http://caniuse.com/#search=box-sizing */
 	box-sizing:         border-box;
 }
-body {background: #111;}
+body {background: #111; color:#000;}
 article,
 aside,
 details,

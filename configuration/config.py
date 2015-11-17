@@ -8,9 +8,8 @@ options = {
 'margin-left': '10mm',
 'encoding': "UTF-8",
 'no-background': None,
-'user-style-sheet':'template.css',
 'disable-javascript': None,
 'quiet': None
 }
 
-css = 'configuration/template2.css'
+css = 'configuration/template.css'
