@@ -111,7 +111,7 @@ def main(RANGE, search, downloadURL):
 		for i in links[1:]:
 			for j in search.split(" "):
 				if j.replace("\"", "") in i:
-					print("[ARTIGO] " + i.replace("http://cienciahacker.com.br/", "").replace("/", "").replace("-", " "))
+					print("[ARTIGO] " + i.replace("https://cienciahacker.com.br/", "").replace("/", "").replace("-", " "))
 					print("[URL] " + i + "\n")
 				else:
 					pass
@@ -134,7 +134,7 @@ def main(RANGE, search, downloadURL):
 	while question == True:
 		#pede confirmacao do usuario
 		if downloadURL != False:
-			user = input("\n [!] Gerar \"%s\" [Y]es [N]o: " % url.replace("http://cienciahacker.com.br/", "").replace("/", "").replace("-", " ")).lower()
+			user = input("\n [!] Gerar \"%s\" [Y]es [N]o: " % url.replace("https://cienciahacker.com.br/", "").replace("/", "").replace("-", " ")).lower()
 		else:
 			user = input("\n [!] Gerar %i PDFs? [Y]es [N]o [S]how: " % total).lower()
 
@@ -157,7 +157,7 @@ def main(RANGE, search, downloadURL):
 	#converte apenas uma url
 	if downloadURL != False:
 		try:
-			out = str(url.replace("http://cienciahacker.com.br/", "").replace("/", "").replace("-", " ") + ".pdf")
+			out = str(url.replace("https://cienciahacker.com.br/", "").replace("/", "").replace("-", " ") + ".pdf")
 			print(" Gerando: %s" % (out))
 			gerador(url, out)
 
@@ -173,7 +173,7 @@ def main(RANGE, search, downloadURL):
 	else:
 		for url in links:
 			try:
-				out = str(url.replace("http://cienciahacker.com.br/", "").replace("/", "").replace("-", " ") + ".pdf")
+				out = str(url.replace("https://cienciahacker.com.br/", "").replace("/", "").replace("-", " ") + ".pdf")
 				print(" [%i/%i] Gerando: %s" % (count, total, out))
 				gerador(url, out)
 
