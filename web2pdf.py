@@ -47,8 +47,9 @@ def main(RANGE, search, downloadURL):
 		html = u.urlopen(URL)
 		soup = BeautifulSoup(html.read().decode("utf-8"), "html5lib")
 
-		for i in soup.findAll("article"):#, attrs={"class":"entry-content"}):
-			content.append(i)
+		for i in soup.findAll("article"):
+			for j in i.findAll("div", attrs={"class":"entry-content"}):
+				content.append(i)
 
 		src = \
 """\
@@ -60,7 +61,7 @@ def main(RANGE, search, downloadURL):
 
 		with open("out.html", "w") as output:
 			output.write(src)
-		pdfkit.from_file("out.html", "output/%s" % OUT, options=options, css=css)
+		pdfkit.from_file("out.html", "output/%s" % OUT, options=options)
 
 	"""
 	COLETA TODOS OS LINKS DO GITHUB  ###########################################
@@ -111,7 +112,7 @@ def main(RANGE, search, downloadURL):
 		for i in links[1:]:
 			for j in search.split(" "):
 				if j.replace("\"", "") in i:
-					print("[ARTIGO] " + i.replace("https://cienciahacker.com.br/", "").replace("/", "").replace("-", " "))
+					print("[ARTIGO] " + i.replace("http://blog.cienciahacker.com.br/", "").replace("/", "").replace("-", " "))
 					print("[URL] " + i + "\n")
 				else:
 					pass
@@ -157,7 +158,7 @@ def main(RANGE, search, downloadURL):
 	#converte apenas uma url
 	if downloadURL != False:
 		try:
-			out = str(url.replace("https://cienciahacker.com.br/", "").replace("/", "").replace("-", " ") + ".pdf")
+			out = str(url.replace("http://blog.cienciahacker.com.br/", "").replace("/", "").replace("-", " ") + ".pdf")
 			print(" Gerando: %s" % (out))
 			gerador(url, out)
 
@@ -173,7 +174,7 @@ def main(RANGE, search, downloadURL):
 	else:
 		for url in links:
 			try:
-				out = str(url.replace("https://cienciahacker.com.br/", "").replace("/", "").replace("-", " ") + ".pdf")
+				out = str(url.replace("http://blog.cienciahacker.com.br/", "").replace("/", "").replace("-", " ") + ".pdf")
 				print(" [%i/%i] Gerando: %s" % (count, total, out))
 				gerador(url, out)
 

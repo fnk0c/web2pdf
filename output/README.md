@@ -1,1 +1,1 @@
-** PDFs output directory **
+**Output directory of generated PDFs**
