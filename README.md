@@ -4,10 +4,10 @@ Gera PDF de todos os artigos do Ciência Hacker presentes na lista de artigos do
 Install
 ----
 * Debian  
-  `apt-get install python3 python3-pip`  
+  `apt-get install python3 python3-pip wkhtmltopdf`  
   `pip3 install -r requeriments.txt`  
 * Arch  
-  `pacman -S python python-pip`  
+  `pacman -S python python-pip wkhtmltopdf`  
   `pip install -r requeriments.txt`  
 
 Usage
